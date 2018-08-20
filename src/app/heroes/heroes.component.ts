@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../hero.service';
+import {takeWhile} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-heroes',
@@ -8,9 +10,10 @@ import {HeroService} from '../hero.service';
   styleUrls: ['./heroes.component.css']
 })
 
-export class HeroesComponent implements OnInit {
+export class HeroesComponent implements OnInit, OnDestroy {
 
   heroes: Hero[];
+  aliveBool = true;
 
   constructor(private heroService: HeroService) {
   }
@@ -20,7 +23,13 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe(hero => this.heroes = hero);
+    this.heroService.getHeroes().pipe(takeWhile(() => this.aliveBool)).subscribe(hero => this.heroes = hero);
   }
+
+  ngOnDestroy(): void {
+    this.aliveBool = false;
+  }
+
+
 
 }
