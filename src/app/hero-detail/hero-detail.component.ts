@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Hero} from '../hero';
 import {ActivatedRoute} from '@angular/router';
 import {HeroService} from '../hero.service';
 import {Location} from '@angular/common';
+import {takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-hero-detail',
@@ -10,8 +11,9 @@ import {Location} from '@angular/common';
   styleUrls: ['./hero-detail.component.css']
 })
 
-export class HeroDetailComponent implements OnInit {
+export class HeroDetailComponent implements OnInit, OnDestroy {
 
+  isAlive = true;
   @Input() hero: Hero;
 
   constructor(
@@ -27,10 +29,18 @@ export class HeroDetailComponent implements OnInit {
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+    this.heroService.getHero(id).pipe(takeWhile(() => this.isAlive)).subscribe(hero => this.hero = hero);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save() {
+    this.heroService.updateHero(this.hero).pipe(takeWhile(() => this.isAlive)).subscribe(() => this.goBack());
+  }
+
+  ngOnDestroy(): void {
+    this.isAlive = false;
   }
 }

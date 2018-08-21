@@ -13,7 +13,7 @@ import {Observable} from 'rxjs';
 export class HeroesComponent implements OnInit, OnDestroy {
 
   heroes: Hero[];
-  aliveBool = true;
+  isAlive = true;
 
   constructor(private heroService: HeroService) {
   }
@@ -23,13 +23,25 @@ export class HeroesComponent implements OnInit, OnDestroy {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().pipe(takeWhile(() => this.aliveBool)).subscribe(hero => this.heroes = hero);
+    this.heroService.getHeroes().pipe(takeWhile(() => this.isAlive)).subscribe(heroes => this.heroes = heroes);
+  }
+
+  add(name: string) {
+    name = name.trim();
+
+    if (!name) {
+      return;
+    }
+
+    this.heroService.addHero({name} as Hero).subscribe(hero => this.heroes.push(hero));
+  }
+
+  delete(hero: Hero) {
+    this.heroes = this.heroes.filter(it => it !== hero);
+    this.heroService.deleteHero(hero).pipe(takeWhile(() => this.isAlive)).subscribe();
   }
 
   ngOnDestroy(): void {
-    this.aliveBool = false;
+    this.isAlive = false;
   }
-
-
-
 }
