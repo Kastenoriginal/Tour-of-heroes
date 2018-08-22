@@ -1,8 +1,18 @@
-<div class="row">
-  <nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/heroes">Heroes</a>
-  </nav>
+<nav>
+  <div class="nav-wrapper">
+    <div class="row z-depth-2">
+      <div class="col s12">
+        <a routerLink="/dashboard" class="brand-logo center">Logo</a>
+        <ul class="left">
+          <li><a routerLink="/dashboard">Dashboard</a></li>
+          <li><a routerLink="/heroes">Heroes</a></li>
+          <li><a onclick="showToast()">Toast</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="row yellow">
   <div class="col s3">
     <div class="container">
       Menu content
