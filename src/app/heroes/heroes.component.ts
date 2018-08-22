@@ -1,13 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Hero} from '../hero';
-import {HeroService} from '../hero.service';
+import {HeroService} from '../services/hero.service';
 import {takeWhile} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  styleUrls: ['./heroes.component.scss']
 })
 
 export class HeroesComponent implements OnInit, OnDestroy {
