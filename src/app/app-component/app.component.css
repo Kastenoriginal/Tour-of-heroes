@@ -1,3 +1,16 @@
+#theme-parent.default nav {
+  background-color: #424242; }
+#theme-parent.default .content {
+  background-color: #eeeeee; }
 
+#theme-parent.heroes nav {
+  background-color: #1565c0; }
+#theme-parent.heroes .content {
+  background-color: #e3f2fd; }
 
-/*# sourceMappingURL=app.app-component.css.map */
+#theme-parent.villains nav {
+  background-color: #c62828; }
+#theme-parent.villains .content {
+  background-color: #ffebee; }
+
+/*# sourceMappingURL=app.component.css.map */

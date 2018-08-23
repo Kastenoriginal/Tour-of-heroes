@@ -13,6 +13,7 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import {MaterializeModule} from 'angular2-materialize';
+import { VillainsComponent } from './villains/villains.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MaterializeModule} from 'angular2-materialize';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
+    VillainsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,25 +1,27 @@
-<nav>
-  <div class="nav-wrapper">
-    <div class="row z-depth-2">
-      <div class="col s12">
-        <a routerLink="/dashboard" class="brand-logo center">Logo</a>
-        <ul class="left">
-          <li><a routerLink="/dashboard">Dashboard</a></li>
-          <li><a routerLink="/heroes">Heroes</a></li>
-          <li><a onclick="showToast()">Toast</a></li>
-        </ul>
+<div id="theme-parent" class={{cssClass}}>
+  <nav>
+    <div class="nav-wrapper">
+      <div class="row">
+        <div class="col s12">
+          <a routerLink="/dashboard" class="brand-logo center">{{title}}</a>
+          <ul class="left">
+            <li *ngFor="let menuEntry of menuEntries" (click)="changeTheme(menuEntry.class)">
+              <a routerLink="/{{menuEntry.url}}">{{menuEntry.name}}</a>
+            </li>
+          </ul>
+          <ul class="right">
+            <li><a onclick="showToast()">Toast</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
-<div class="row yellow">
-  <div class="col s3">
+  </nav>
+  <div class="row content">
     <div class="container">
-      Menu content
+      <div class="col s12">
+        <router-outlet></router-outlet>
+        <app-messages></app-messages>
+      </div>
     </div>
-  </div>
-  <div class="col s9">
-    <router-outlet></router-outlet>
-    <app-messages></app-messages>
   </div>
 </div>

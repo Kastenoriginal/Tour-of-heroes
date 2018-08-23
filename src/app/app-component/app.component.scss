@@ -1,0 +1,30 @@
+@import "../../app/utils/variables";
+
+#theme-parent.default {
+  nav {
+    background-color: $navbar-color-default;
+  }
+  .content {
+    background-color: $content-color-default;
+  }
+}
+
+#theme-parent.heroes {
+  nav {
+    background-color: $navbar-color-heroes;
+  }
+
+  .content {
+    background-color: $content-color-heroes;
+  }
+}
+
+#theme-parent.villains {
+  nav {
+    background-color: $navbar-color-villains;
+  }
+
+  .content {
+    background-color: $content-color-villains;
+  }
+}
