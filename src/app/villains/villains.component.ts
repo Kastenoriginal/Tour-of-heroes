@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-villains',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VillainsComponent implements OnInit {
 
-  constructor() { }
+  private currentUrl: string;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    this.currentUrl = this.router.url;
+    console.log(this.currentUrl);
   }
-
 }

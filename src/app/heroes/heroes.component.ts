@@ -3,6 +3,7 @@ import {Hero} from '../hero';
 import {HeroService} from '../services/hero.service';
 import {takeWhile} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -14,12 +15,15 @@ export class HeroesComponent implements OnInit, OnDestroy {
 
   heroes: Hero[];
   isAlive = true;
+  private currentUrl: string;
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: HeroService, private router: Router) {
   }
 
   ngOnInit() {
     this.getHeroes();
+    this.currentUrl = this.router.url;
+    console.log(this.currentUrl);
   }
 
   getHeroes(): void {
