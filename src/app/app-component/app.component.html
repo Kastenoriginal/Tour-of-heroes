@@ -1,3 +1,4 @@
+<!--<app-villains (cssClassChange)="changeTheme($event)"></app-villains>-->
 <div id="theme-parent" class={{cssClass}}>
   <nav>
     <div class="nav-wrapper">
@@ -5,13 +6,13 @@
         <div class="col s12">
           <a routerLink="/dashboard" class="brand-logo center">{{title}}</a>
           <ul class="left">
-            <li *ngFor="let menuEntry of menuEntries" (click)="changeTheme(menuEntry.class)">
+            <li *ngFor="let menuEntry of menuEntries" (click)='changeTheme(menuEntry.class)'>
               <a routerLink="/{{menuEntry.url}}">{{menuEntry.name}}</a>
             </li>
           </ul>
-          <ul class="right">
-            <li><a onclick="showToast()">Toast</a></li>
-          </ul>
+          <!--<ul class="right">-->
+            <!--<li><a onclick="showToast()">Toast</a></li>-->
+          <!--</ul>-->
         </div>
       </div>
     </div>

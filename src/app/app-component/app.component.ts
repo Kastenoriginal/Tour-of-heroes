@@ -8,14 +8,13 @@ import {ENTRIES} from './menu-entries';
 })
 
 export class AppComponent implements OnInit {
+
   title = 'Tour of Heroes';
   menuEntries = ENTRIES;
-  @Input() cssClass = 'default';
-  @Output() cssClassChange = new EventEmitter<string>();
+  cssClass = 'default';
 
   changeTheme(cssClass: string) {
     this.cssClass = cssClass;
-    this.cssClassChange.emit(cssClass);
   }
 
   ngOnInit(): void {
