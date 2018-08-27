@@ -13,4 +13,13 @@
 #theme-parent.villains .content {
   background-color: #ffebee; }
 
+.input-field .search-result {
+  position: absolute;
+  z-index: 9; }
+  .input-field .search-result li {
+    background-color: #e0e0e0;
+    padding: 0; }
+  .input-field .search-result a {
+    color: black; }
+
 /*# sourceMappingURL=app.component.css.map */

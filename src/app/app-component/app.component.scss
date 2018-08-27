@@ -28,3 +28,15 @@
     background-color: $content-color-villains;
   }
 }
+
+.input-field .search-result {
+  position: absolute;
+  z-index: 9;
+  li {
+    background-color: #e0e0e0;
+    padding: 0;
+  }
+  a {
+    color: black;
+  }
+}

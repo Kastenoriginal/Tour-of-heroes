@@ -11,9 +11,10 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
 import {MaterializeModule} from 'angular2-materialize';
 import { VillainsComponent } from './villains/villains.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatAutocompleteModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import { VillainsComponent } from './villains/villains.component';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent,
     VillainsComponent,
   ],
   imports: [
@@ -34,7 +34,12 @@ import { VillainsComponent } from './villains/villains.component';
     MaterializeModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {dataEncapsulation: false}
-    )
+    ),
+    BrowserAnimationsModule,
+    MatAutocompleteModule
+  ],
+  exports: [
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

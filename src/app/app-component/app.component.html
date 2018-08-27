@@ -1,18 +1,32 @@
-<!--<app-villains (cssClassChange)="changeTheme($event)"></app-villains>-->
+<app-villains (cssClassChange)="changeTheme($event)" style="display: none" xmlns=""></app-villains>
 <div id="theme-parent" class={{cssClass}}>
   <nav>
     <div class="nav-wrapper">
       <div class="row">
-        <div class="col s12">
+        <div class="col s9">
           <a routerLink="/dashboard" class="brand-logo center">{{title}}</a>
           <ul class="left">
             <li *ngFor="let menuEntry of menuEntries" (click)='changeTheme(menuEntry.class)'>
               <a routerLink="/{{menuEntry.url}}">{{menuEntry.name}}</a>
             </li>
           </ul>
-          <!--<ul class="right">-->
-            <!--<li><a onclick="showToast()">Toast</a></li>-->
-          <!--</ul>-->
+        </div>
+
+        <!--<mat-form-field>-->
+          <!--<input type="text" matInput [formControl]="myControl">-->
+        <!--</mat-form-field>-->
+
+
+        <div class="input-field col s3">
+          <input #searchBox type="text" id="searchBox" (keyup)="search(searchBox.value)">
+          <ul class="search-result row">
+            <li *ngFor="let hero of heroes$ | async" class="col s12">
+              <a routerLink="/detail/{{hero.id}}">
+                {{hero.name}}
+              </a>
+            </li>
+          </ul>
+          <label for="searchBox">Search heroes</label>
         </div>
       </div>
     </div>

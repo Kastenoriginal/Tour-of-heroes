@@ -23,7 +23,6 @@ export class HeroesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getHeroes();
     this.currentUrl = this.router.url;
-    console.log(this.currentUrl);
   }
 
   getHeroes(): void {
