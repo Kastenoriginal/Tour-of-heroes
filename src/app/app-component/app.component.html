@@ -11,12 +11,6 @@
             </li>
           </ul>
         </div>
-
-        <!--<mat-form-field>-->
-          <!--<input type="text" matInput [formControl]="myControl">-->
-        <!--</mat-form-field>-->
-
-
         <div class="input-field col s3">
           <input #searchBox type="text" id="searchBox" (keyup)="search(searchBox.value)">
           <ul class="search-result row">
@@ -35,7 +29,6 @@
     <div class="container">
       <div class="col s12">
         <router-outlet></router-outlet>
-        <app-messages></app-messages>
       </div>
     </div>
   </div>

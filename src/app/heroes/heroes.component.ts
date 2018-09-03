@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Hero} from '../hero';
 import {HeroService} from '../services/hero.service';
 import {takeWhile} from 'rxjs/operators';
-import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 
 @Component({
@@ -29,14 +28,19 @@ export class HeroesComponent implements OnInit, OnDestroy {
     this.heroService.getHeroes().pipe(takeWhile(() => this.isAlive)).subscribe(heroes => this.heroes = heroes);
   }
 
-  add(name: string) {
+  add(name: string, bio: string) {
     name = name.trim();
+    bio = bio.trim();
 
-    if (!name) {
+    if (!name || !bio) {
       return;
     }
 
-    this.heroService.addHero({name} as Hero).subscribe(hero => this.heroes.push(hero));
+    const newHero = new Hero();
+    newHero.name = name;
+    newHero.bio = bio;
+
+    this.heroService.addHero(newHero).subscribe(hero => this.heroes.push(hero));
   }
 
   delete(hero: Hero) {

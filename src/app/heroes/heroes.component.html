@@ -1,20 +1,36 @@
 <div class="main-content z-depth-0">
-  <div>
-    <label>Hero name:
-      <input #heroName/>
-    </label>
-    <button (click)="add(heroName.value); heroName.value=''">
-      add
-    </button>
+
+  <div class="row valign-wrapper">
+    <div class="input-field col s2">
+      <label for="heroName">Hero name</label>
+      <input #heroName type="text" id="heroName"/>
+    </div>
+    <div class="input-field col s8">
+      <label for="heroBio">Bio</label>
+      <input #heroBio type="text" id="heroBio">
+    </div>
+    <div class="col s2 right">
+      <a class="waves-effect waves-light btn" (click)="add(heroName.value, heroBio.value); heroName.value=''; heroBio.value=''">add</a>
+    </div>
   </div>
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes">
-      <a routerLink="/detail/{{hero.id}}">
-        <span class="badge">{{hero.id}}</span>{{hero.name}}
-      </a>
-      <button class="delete" title="delete hero" (click)="delete(hero)">
-        x
-      </button>
-    </li>
-  </ul>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <label for="idInput">id</label>
+      <input type="text" id="idInput">
+    </div>
+  </div>
+
+  <div class="row valign-wrapper">
+    <div class="col s4">
+      <a class="waves-effect waves-light btn">Get All</a>
+    </div>
+    <div class="col s4">
+      <a class="waves-effect waves-light btn">Get by Id</a>
+    </div>
+    <div class="col s4">
+      <a class="waves-effect waves-light btn">Delete</a>
+    </div>
+  </div>
+
 </div>
